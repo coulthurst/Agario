@@ -54,6 +54,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Background.cs" />
+    <Compile Include="Cell.cs" />
+    <Compile Include="GamePlay.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Spawn.cs" />
     <Compile Include="Virus.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

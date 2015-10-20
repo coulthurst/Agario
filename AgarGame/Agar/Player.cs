@@ -15,13 +15,14 @@ using System.Windows.Shapes;
 
 namespace Agar
 {
-    class Virus
+    class Player : Cell
     {
-        public int Width { get; set; }
-        public int Height { get; set; }
-        public int Left { get; set; }
-        public int Top { get; set; }
-        public SolidColorBrush Color { get; set; }
+        public Player(int width, int height, int left, int top)
+        {
+            this.Width = width;
+            this.Height = height;
+            this.Left = left;
+            this.Top = top;
+        }
     }
-
 }
