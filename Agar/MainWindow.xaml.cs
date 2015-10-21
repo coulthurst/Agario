@@ -21,27 +21,24 @@ using System.Threading;
 
 namespace Agar
 {
-   
-    
     public partial class MainWindow : Window
     {
-       //Canvas canvasPanel = new Canvas();
-       
+        Random rnd = new Random(); 
+
         public MainWindow()
         {
             InitializeComponent();
-            
-            //CreatePlayer();
-            //CreateFood();
-            //CreateVirus();
 
-            CellA.KeyDown += new KeyEventHandler(OnKeyDown);
-            CellA.Focus();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             CreateCanvas();
+            //CreatePlayer();
+            //CreateFood();
+            //CreateVirus();
+            CellA.KeyDown += new KeyEventHandler(OnKeyDown);
+            CellA.Focus();
         }
        
 
@@ -50,37 +47,45 @@ namespace Agar
             Screen.Background = new SolidColorBrush(Colors.AntiqueWhite);
         }
 
-
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
-
             FrameworkElement element = (FrameworkElement)e.OriginalSource;
 
             switch (e.Key)
             {
+                case Key.Space:
 
                 case Key.Left:
                     if (Canvas.GetLeft(element) > 0) Canvas.SetLeft(element, Canvas.GetLeft(element) - 8);
-                    CheckCollision(CellA, CellB);
+                    //BFT TODO: Find cleaner way to do collision detection. Make one general collision detection function that can handle any two entities, then make a function that contains that function that will check all cells against all entities.
+                    //BFT TODO: Find a better way to handle cells rather than CellA, CellB, etc.
+                    CheckCollisionFood(CellA, CellB);
+                    CheckCollisionBetweenCells(CellA, Blue);
                     break;
                 case Key.Right:
                     Canvas.SetLeft(element, Canvas.GetLeft(element) + 8);
-                    CheckCollision(CellA, CellB);
+                    CheckCollisionFood(CellA, CellB);
+                    CheckCollisionBetweenCells(CellA, Blue);
                     break;
                 case Key.Up:
                     if (Canvas.GetTop(element) > 0) Canvas.SetTop(element, Canvas.GetTop(element) - 8);
-                    CheckCollision(CellA, CellB);
+                    CheckCollisionFood(CellA, CellB);
+                    CheckCollisionBetweenCells(CellA, Blue);
                     break;
                 case Key.Down:
                     Canvas.SetTop(element, Canvas.GetTop(element) + 8);                  
-                    CheckCollision(CellA, CellB);
+                    CheckCollisionFood(CellA, CellB);
+                    CheckCollisionBetweenCells(CellA, Blue);
                     break;
                 default:
                     return;
             }
         }
 
-        public bool CheckCollision(Ellipse e1, Ellipse e2)
+      
+        //BFT TODO: Single responsibility principle: CheckCollision should only check for collisions, not handle them. Handle collisions in respective entity classes
+        //BFT TODO: Logic functions don't belong here. This file should only contain UI (input/output) functions.
+        public void CheckCollisionFood(Ellipse e1, Ellipse e2)
         {
             var r1 = e1.ActualWidth / 2;
             var x1 = Canvas.GetLeft(e1) + r1;
@@ -91,23 +96,49 @@ namespace Agar
             var d = new Vector(x2 - x1, y2 - y1);
             if (d.Length <= r1 + r2)
             {
-
-                CreateFood();
-                canvasPanel.Children.Remove(CellB);
+                Canvas.SetLeft(CellB, rnd.Next(30, 770));
+                Canvas.SetTop(CellB, rnd.Next(30, 570));
+                CellA.Width = CellA.Width + 7.5;
+                CellA.Height = CellA.Height + 7.5;
             }
-            return false;
         }
-        
-        
-
-        Random rnd = new Random();      
+        public void CheckCollisionBetweenCells(Ellipse e1, Ellipse e2)
+        {
+            var r1 = e1.ActualWidth / 2;
+            var x1 = Canvas.GetLeft(e1) + r1;
+            var y1 = Canvas.GetTop(e1) + r1;
+            var r2 = e2.ActualWidth / 2;
+            var x2 = Canvas.GetLeft(e2) + r2;
+            var y2 = Canvas.GetTop(e2) + r2;
+            var d = new Vector(x2 - x1, y2 - y1);
+            if (d.Length <= ((r1 + r2)/2) && r1*.9> r2)
+            {
+                if (r1 > r2)
+                {
+                    CellA.Width = CellA.Width + Math.Sqrt(Blue.Width);
+                    CellA.Height = CellA.Height + Math.Sqrt(Blue.Height);
+                    Blue.Height = 0;
+                    Blue.Width = 0;
+                }
+            }
+            if (d.Length <= ((r2 + r1)/2) && r2*.9> r1)
+            {
+                Blue.Width = Blue.Width + Math.Sqrt(CellA.Width);
+                Blue.Height = Blue.Height + Math.Sqrt(CellA.Height);
+                CellA.Height = 0;
+                CellA.Width = 0;
+            }
+        }
+ 
         public void CreatePlayer()
         {
+            //BFT TODO: Make this a member variable on GamePlay class
+            //BFT TODO: Variable name needs to imply plurality
             List<Player> player = new List<Player>();
             player.Add(new Player(75, 75, 0, 0)
             { Color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#E74C3C")), });
-            
 
+            //BFT TODO: Rename cell
             foreach (Player cell in player)
             {
                 //create player object
@@ -120,7 +151,6 @@ namespace Agar
                 Canvas.SetTop(el, rnd.Next(1, 600));
 
                 canvasPanel.Children.Add(el);
-                
             }
         }
        
@@ -147,8 +177,10 @@ namespace Agar
             }
         }
 
+        //Make cells, viruses, and food member variables on GamePlay so you can create a general collision detection function on GamePlay that will loop through all of them and see which collide
         public void CreateFood()
         {
+
             List<Food> food = new List<Food>();
 
             food.Add(new Food(15, 15, 0, 0)
@@ -166,16 +198,8 @@ namespace Agar
                 Canvas.SetTop(el, rnd.Next(1, 600));
 
                canvasPanel.Children.Add(el);
-               
             }
         }
-
-
-
-       
-
-        
-        
     }
 }
     

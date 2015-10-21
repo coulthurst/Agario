@@ -17,8 +17,9 @@ namespace Agar
 {
     class GamePlay
     {
+        
 
-        //public bool CheckCollision(Ellipse e1, Ellipse e2)
+        //public void CheckCollisionFood(Ellipse e1, Ellipse e2)
         //{
         //    var r1 = e1.ActualWidth / 2;
         //    var x1 = Canvas.GetLeft(e1) + r1;
@@ -29,21 +30,44 @@ namespace Agar
         //    var d = new Vector(x2 - x1, y2 - y1);
         //    if (d.Length <= r1 + r2)
         //    {
-        //        while (true)
+        //        Canvas.SetLeft(CellB, rnd.Next(30, 770));
+        //        Canvas.SetTop(CellB, rnd.Next(30, 570));
+        //        CellA.Width = CellA.Width + 7.5;
+        //        CellA.Height = CellA.Height + 7.5;
+        //    }
+        //}
+        //public void CheckCollisionBetweenCells(Ellipse e1, Ellipse e2)
+        //{
+        //    var r1 = e1.ActualWidth / 2;
+        //    var x1 = Canvas.GetLeft(e1) + r1;
+        //    var y1 = Canvas.GetTop(e1) + r1;
+        //    var r2 = e2.ActualWidth / 2;
+        //    var x2 = Canvas.GetLeft(e2) + r2;
+        //    var y2 = Canvas.GetTop(e2) + r2;
+        //    var d = new Vector(x2 - x1, y2 - y1);
+        //    if (d.Length <= ((r1 + r2) / 2) && r1 * .9 > r2)
+        //    {
+        //        if (r1 > r2)
         //        {
-        //           CreateFood();
+        //            CellA.Width = CellA.Width + Math.Sqrt(Blue.Width);
+        //            CellA.Height = CellA.Height + Math.Sqrt(Blue.Height);
+        //            Blue.Height = 0;
+        //            Blue.Width = 0;
         //        }
         //    }
-        //    return false;
+        //    if (d.Length <= ((r2 + r1) / 2) && r2 * .9 > r1)
+        //    {
+        //        Blue.Width = Blue.Width + Math.Sqrt(CellA.Width);
+        //        Blue.Height = Blue.Height + Math.Sqrt(CellA.Height);
+        //        CellA.Height = 0;
+        //        CellA.Width = 0;
+        //    }
         //}
 
-
-        //Random rnd = new Random();
         //public void CreatePlayer()
         //{
         //    List<Player> player = new List<Player>();
         //    player.Add(new Player(75, 75, 0, 0) { Color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#E74C3C")), });
-
 
         //    foreach (Player cell in player)
         //    {
@@ -57,7 +81,6 @@ namespace Agar
         //        Canvas.SetTop(el, rnd.Next(1, 600));
 
         //        canvasPanel.Children.Add(el);
-
         //    }
         //}
 
@@ -82,6 +105,7 @@ namespace Agar
         //        canvasPanel.Children.Add(el);
         //    }
         //}
+       
 
         //public void CreateFood()
         //{
@@ -96,11 +120,11 @@ namespace Agar
         //        el.Width = dot.Width;
         //        el.Height = dot.Height;
         //        el.Fill = dot.Color;
-
+        //        canvasPanel.Children.Add(el);
         //        Canvas.SetLeft(el, rnd.Next(1, 800));
         //        Canvas.SetTop(el, rnd.Next(1, 600));
 
-        //        canvasPanel.Children.Add(el);
+                
         //    }
         //}
     }

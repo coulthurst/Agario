@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+//BFT TODO: Get rid of this class/file
 namespace Agar
 {
     class Spawn : GamePlay
