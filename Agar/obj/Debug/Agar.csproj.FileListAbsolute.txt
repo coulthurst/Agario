@@ -19,7 +19,6 @@ C:\Users\cschmitt_be\Dropbox\AgarGame\Agar\obj\Debug\Agar.exe
 C:\Users\cschmitt_be\Dropbox\AgarGame\Agar\obj\Debug\Agar.pdb
 C:\Users\cschmitt_be\Dropbox\AgarGame\Agar\bin\Debug\Agar.exe
 C:\Users\cschmitt_be\Dropbox\AgarGame\Agar\bin\Debug\Agar.pdb
-C:\Users\cschmitt_be\Dropbox\AgarGame\Agar\obj\Debug\Agar.csprojResolveAssemblyReference.cache
 C:\Users\cschmitt_be\Dropbox\AgarGame\Agar\obj\Debug\MainWindow.baml
 C:\Users\cschmitt_be\Dropbox\AgarGame\Agar\obj\Debug\MainWindow.g.cs
 C:\Users\cschmitt_be\Dropbox\AgarGame\Agar\obj\Debug\App.g.cs
@@ -27,3 +26,6 @@ C:\Users\cschmitt_be\Dropbox\AgarGame\Agar\obj\Debug\Agar_MarkupCompile.cache
 C:\Users\cschmitt_be\Dropbox\AgarGame\Agar\obj\Debug\Agar.g.resources
 C:\Users\cschmitt_be\Dropbox\AgarGame\Agar\obj\Debug\Agar.Properties.Resources.resources
 C:\Users\cschmitt_be\Dropbox\AgarGame\Agar\obj\Debug\Agar.csproj.GenerateResource.Cache
+C:\Users\cschmitt_be\Dropbox\AgarGame\Agar\obj\Debug\MainScreen.baml
+C:\Users\cschmitt_be\Dropbox\AgarGame\Agar\obj\Debug\MainScreen.g.cs
+C:\Users\cschmitt_be\Dropbox\AgarGame\Agar\obj\Debug\Agar.csprojResolveAssemblyReference.cache

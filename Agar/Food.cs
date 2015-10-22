@@ -17,13 +17,9 @@ namespace Agar
 {
     class Food : Cell
     {
-      public Food(int width, int height, int left, int top)
-        {
-            this.Width = width;
-            this.Height = height;
-            this.Left = left;
-            this.Top = top;
-        }
+
+        public Food(int width, int height, int left, int top, string color)
+            : base(width, height, left, top, color) { }
     }
 }
 

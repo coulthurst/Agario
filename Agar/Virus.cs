@@ -17,12 +17,7 @@ namespace Agar
 {
     class Virus : Cell
     {
-        public Virus(int width, int height, int left, int top)
-        {
-            this.Width = width;
-            this.Height = height;
-            this.Left = left;
-            this.Top = top;
-        }
+        public Virus(int width, int height, int left, int top, string color)
+            : base(width, height, left, top, color) { }
     }
 }

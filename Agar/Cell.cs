@@ -22,7 +22,16 @@ namespace Agar
         public double Height { get; set; }
         public int Left { get; set; }
         public int Top { get; set; }
-        //public Rect Bounds { get; set; }
-        public SolidColorBrush Color { get; set; }
+        public string Color { get; set; }
+        public Cell(int width, int height, int left, int top, string color)
+        {
+            this.Width = width;
+            this.Height = height;
+            this.Left = left;
+            this.Top = top;
+            this.Color = color;
+        }
     }
+
+
 }

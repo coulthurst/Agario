@@ -16,13 +16,8 @@ using System.Windows.Shapes;
 namespace Agar
 {
     class Player : Cell
-    {
-        public Player(int width, int height, int left, int top)
-        {
-            this.Width = width;
-            this.Height = height;
-            this.Left = left;
-            this.Top = top;
-        }
+    { 
+        public Player(int width, int height, int left, int top, string color)
+            : base(width, height, left, top, color) { }
     }
 }
