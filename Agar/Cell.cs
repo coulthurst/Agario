@@ -18,17 +18,19 @@ namespace Agar
     class Cell
     {
         
-        public double Width { get; set; }
-        public double Height { get; set; }
+        public double ActualWidth { get; set; }
+        public double ActualHeight { get; set; }
         public int Left { get; set; }
         public int Top { get; set; }
+        public Ellipse Surface { get; set; }
         public string Color { get; set; }
-        public Cell(int width, int height, int left, int top, string color)
+        public Cell(int width, int height, int left, int top, Ellipse shape, string color)
         {
-            this.Width = width;
-            this.Height = height;
+            this.ActualWidth = width;
+            this.ActualHeight = height;
             this.Left = left;
             this.Top = top;
+            this.Surface = shape;
             this.Color = color;
         }
     }

@@ -18,7 +18,7 @@ namespace Agar
 {
     class GamePlay
     {
-        
+
         public List<Player> players = new List<Player>();
         public List<Food> foods = new List<Food>();
         public List<Virus> viruses = new List<Virus>();
@@ -29,25 +29,24 @@ namespace Agar
         public GamePlay()
         {
         }
-        
 
-        public List<Food> AddFood(int width, int height, int left, int top, string color)
+        public List<Food> AddFood(int width, int height, int left, int top, Ellipse shape, string color)
         {
-            foods.Add(new Food(width, height, left, top, color));
+            foods.Add(new Food(width, height, left, top, shape, color));
             return foods;
         }
 
-        public List<Player> AddPlayer(int width, int height, int left, int top, string color)
+        public List<Player> AddPlayer(int width, int height, int left, int top, Ellipse shape, string color)
         {
-            players.Add(new Player(width, height, left, top, color));
+            players.Add(new Player(width, height, left, top, shape, color));
             return players;
-         }
+        }
 
-        public List<Virus> AddVirus(int width, int height, int left, int top, string color)
+        public List<Virus> AddVirus(int width, int height, int left, int top, Ellipse shape, string color)
         {
-            viruses.Add(new Virus(width, height, left, top, color));
+            viruses.Add(new Virus(width, height, left, top, shape, color));
             return viruses;
-         }
+        }
 
         public List<Cell> AddAllCells()
         {
@@ -56,28 +55,34 @@ namespace Agar
             allCells.AddRange(viruses);
             return allCells;
         }
-        public bool CheckCollision(Ellipse e1, Ellipse e2)
+
+        public List<Cell> RemoveCell(Cell cell)
+        {
+            allCells.Remove(cell);
+            return allCells;
+        }
+        public bool CheckCollision(Ellipse e1, Cell e2)
         {
             bool collision = false;
             var r1 = e1.ActualWidth / 2;
             var x1 = Canvas.GetLeft(e1) + r1;
             var y1 = Canvas.GetTop(e1) + r1;
             var r2 = e2.ActualWidth / 2;
-            var x2 = Canvas.GetLeft(e2) + r2;
-            var y2 = Canvas.GetTop(e2) + r2;
+            var x2 = e2.Left + r2;
+            var y2 = e2.Top + r2;
             var d = new Vector(x2 - x1, y2 - y1);
             return (collision = (d.Length <= ((r1 + r2) / 2) && r1 * .9 > r2));
-        }        
+        }
 
-        public void EatCell(Ellipse e1, Ellipse e2)
+        public void EatCell(Ellipse e1, Cell e2)
         {
             if (CheckCollision(e1, e2) == true)
-                {
-                 e1.Width = e1.Width + Math.Sqrt(e2.Width);
-                 e1.Height = e1.Height + Math.Sqrt(e2.Height);
-                }
+            {
+                e1.Width = e1.ActualWidth + Math.Sqrt(e2.ActualWidth);
+                e1.Height = e1.ActualHeight + Math.Sqrt(e2.ActualHeight);
+                e2.Left = rnd.Next(1, 800);
+                e2.Top = rnd.Next(1, 600);
             }
         }
-       
     }
-
+}

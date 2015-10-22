@@ -18,8 +18,8 @@ namespace Agar
     class Food : Cell
     {
 
-        public Food(int width, int height, int left, int top, string color)
-            : base(width, height, left, top, color) { }
+        public Food(int width, int height, int left, int top, Ellipse shape, string color)
+            : base(width, height, left, top, shape, color) { }
     }
 }
 
