@@ -56,12 +56,29 @@ namespace Agar
             return allCells;
         }
 
+        public List<Food> RemoveFood(Food food)
+        {
+            foods.Remove(food);
+            return foods;
+        }
+
+        public List<Player> RemovePlayer(Player player)
+        {
+            players.Remove(player);
+            return players;
+        }
+
+        public List<Virus> RemoveVirus(Virus virus)
+        {
+            viruses.Remove(virus);
+            return viruses;
+        }
         public List<Cell> RemoveCell(Cell cell)
         {
             allCells.Remove(cell);
             return allCells;
         }
-        public bool CheckCollision(Ellipse e1, Cell e2)
+        public bool CheckCollision(Ellipse e1, Food e2)
         {
             bool collision = false;
             var r1 = e1.ActualWidth / 2;
@@ -74,14 +91,14 @@ namespace Agar
             return (collision = (d.Length <= ((r1 + r2) / 2) && r1 * .9 > r2));
         }
 
-        public void EatCell(Ellipse e1, Cell e2)
+        public void EatCell(Ellipse e1, Food e2)
         {
             if (CheckCollision(e1, e2) == true)
             {
                 e1.Width = e1.ActualWidth + Math.Sqrt(e2.ActualWidth);
                 e1.Height = e1.ActualHeight + Math.Sqrt(e2.ActualHeight);
-                e2.Left = rnd.Next(1, 800);
-                e2.Top = rnd.Next(1, 600);
+                e2.ActualHeight = 0;
+                e2.ActualWidth = 0;
             }
         }
     }
