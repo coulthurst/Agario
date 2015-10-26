@@ -55,11 +55,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Cell.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="GamePlay.cs" />
     <Compile Include="MainScreen.xaml.cs">
       <DependentUpon>MainScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Player.cs" />
+    <Compile Include="Server.cs" />
     <Compile Include="Virus.cs" />
     <Page Include="MainScreen.xaml">
       <SubType>Designer</SubType>

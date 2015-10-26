@@ -6,14 +6,17 @@
       mc:Ignorable="d" 
       d:DesignHeight="900" d:DesignWidth="1200"
 	Title="MainScreen"
+      
     Loaded="Window_Loaded">
     <Grid Name="Screen">
+        
         <Canvas  Name="MainCanvas" Margin="-10,18,10,-18" >
-            <Canvas>
+            <ContentControl x:Name="GameScreen"/>
+            <!--<Canvas>
                 <Ellipse  Focusable="True" Name="CellA" Canvas.Top="224" Canvas.Left="452" Fill="#FFE74C3C" Height="30" Width="30"  IsHitTestVisible="True" ForceCursor="True">
                    
                 </Ellipse>
-            </Canvas>
+            </Canvas>-->
             <!--<Canvas>
                 <Ellipse  Focusable="True" Name="Blue" Fill="#FF5A81D4" Height="100" Stroke="#FF2C3CA0" StrokeThickness="5" Width="100" Canvas.Left="191" Canvas.Top="62">
                     <Ellipse.Effect>
@@ -24,5 +27,6 @@
             
             
         </Canvas>
+            
     </Grid>
 </Page>

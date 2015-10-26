@@ -12,12 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace Agar
 {
-    class Cell
+    class Cell : INotifyPropertyChanged
     {
         
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public double ActualWidth { get; set; }
         public double ActualHeight { get; set; }
         public int Left { get; set; }
@@ -33,7 +36,64 @@ namespace Agar
             this.Surface = shape;
             this.Color = color;
         }
+
+        public double CellWidth
+        {
+            get 
+            { 
+                return ActualWidth; 
+            }
+            set
+            {
+                ActualWidth = value;
+                OnPropertyChanged("CellWidth");
+            }
+        }
+         public double CellHeight
+        {
+            get 
+            { 
+                 return ActualHeight; 
+            }
+            set
+            {
+                ActualHeight = value;
+                OnPropertyChanged("CellHeight");
+            }
+        }
+         public int CellLeft
+        {
+            get 
+            { 
+                return Left; 
+            }
+            set
+            {
+                Left = value;
+                OnPropertyChanged("CellLeft");
+            }
+        }
+         public int CellTop
+        {
+            get 
+            { 
+                return Top; 
+            }
+            set
+            {
+                Top = value;
+                OnPropertyChanged("CellTop");
+            }
+        }
+         
+         protected void OnPropertyChanged(string name)
+         {
+             PropertyChangedEventHandler handler = PropertyChanged;
+             if (handler != null)
+             {
+                 handler(this, new PropertyChangedEventArgs(name));
+             }
+         }
+
     }
-
-
 }
