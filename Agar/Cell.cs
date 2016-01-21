@@ -35,54 +35,5 @@ namespace Agar
             this.Color = color;
         }
 
-        public double CellWidth
-        {
-            get 
-            { 
-                return ActualWidth; 
-            }
-            set
-            {
-                ActualWidth = value;
-                OnPropertyChanged("CellWidth");
-            }
-        }
-         public double CellHeight
-        {
-            get 
-            { 
-                 return ActualHeight; 
-            }
-            set
-            {
-                ActualHeight = value;
-                OnPropertyChanged("CellHeight");
-            }
-        }
-         public int CellLeft
-        {
-            get 
-            { 
-                return Left; 
-            }
-            set
-            {
-                Left = value;
-                OnPropertyChanged("CellLeft");
-            }
-        }
-         public int CellTop
-        {
-            get 
-            { 
-                return Top; 
-            }
-            set
-            {
-                Top = value;
-                OnPropertyChanged("CellTop");
-            }
-        }
-
     }
 }
