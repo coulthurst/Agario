@@ -16,10 +16,8 @@ using System.ComponentModel;
 
 namespace Agar
 {
-    class Cell : INotifyPropertyChanged
+    class Cell
     {
-        
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public double ActualWidth { get; set; }
         public double ActualHeight { get; set; }
@@ -85,15 +83,6 @@ namespace Agar
                 OnPropertyChanged("CellTop");
             }
         }
-         
-         protected void OnPropertyChanged(string name)
-         {
-             PropertyChangedEventHandler handler = PropertyChanged;
-             if (handler != null)
-             {
-                 handler(this, new PropertyChangedEventArgs(name));
-             }
-         }
 
     }
 }
